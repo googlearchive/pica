@@ -1,0 +1,95 @@
+<!--
+/*
+ * Copyright 2012 The Toolkitchen Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE file.
+ */
+-->
+<element name="pi-app">
+  <link rel="stylesheet" href="css/pi-app.css" />
+  <link rel="components" href="../../../toolkit/src/g-component.html">
+  <link rel="components" href="../../../toolkit/src/g-panels.html"/>
+  <link rel="components" href="../../../toolkit/src/g-icon-button.html"/>
+  <link rel="components" href="../../../toolkit/src/g-menu-item.html"/>
+  <link rel="components" href="../../../toolkit/src/g-menu-button.html"/>
+  <link rel="components" href="../../../toolkit/src/g-toolbar.html"/>
+  <link rel="components" href="pi-ribbon.html"/>
+  <link rel="components" href="pi-feed-viewer.html"/>
+  <link rel="components" href="pi-accounts.html"/>
+  <template>
+    <g-panels id="panels" selected="main" transition="flow">
+      <pi-ribbon id="ribbon" label="Pica" selected="0" on-select="ribbonSelect">
+        <g-menu-item label="Topics" src="../images/ribbon_topics.svg"></g-menu-item>
+        <g-menu-item label="Accounts" src="../images/ribbon_accounts.svg"></g-menu-item>
+      </pi-ribbon>
+      <div id="main">
+        <g-toolbar>
+          <g-icon-button id="navButton" src="../images/nav-list.svg" on-click="navButtonClick"></g-icon-button>
+          <label class="flex">{{toolbarTitle}}</label>
+          <g-toolbar class="responsive">
+            <g-menu-button src="../images/view_quilt.svg" selected="0" on-click="layoutSelect">
+              <g-menu-item label="Grid" src="../images/view_modules.svg"></g-menu-item>
+              <g-menu-item label="Quilt" src="../images/view_quilt.svg"></g-menu-item>
+            </g-menu-button>
+            <g-menu-button src="../images/add.svg">
+              <g-menu-item src="../images/edit_page.svg">Post a Comment</g-menu-item>
+              <g-menu-item src="../images/chat.svg">Share Link</g-menu-item>
+              <g-menu-item src="../images/email.svg">Email Link</g-menu-item>
+              <g-menu-item src="../images/favorite.svg">Add to Favorites</g-menu-item>
+            </g-menu-button>
+            <g-icon-button src="../images/search_the_web.svg"></g-icon-button>
+          </g-toolbar>
+          <g-icon-button id="sourceButton" src="../images/source.svg" on-click="toggleSource"></g-icon-button>
+        </g-toolbar>
+        <g-panels id="contentPanels">
+          <pi-feed-viewer id="feedViewer" selected="topics" layout="grid" on-panelchange="feedViewerPanelChange"></pi-feed-viewer>
+          <pi-accounts id="accounts"></pi-accounts>
+        </g-panels>
+      </div>
+      <div id="source" class="right" on-click="toggleSource"></div>
+    </g-panels>
+  </template>
+  <script>
+    this.component({
+      ready: function() {
+        this.ribbonSelect();
+      },
+      navButtonClick: function() {
+        if (this.$.feedViewer.selected == 'topics') {
+          this.toggleNav();
+        } else {
+          this.$.feedViewer.previous();
+        }
+      },
+      toggleNav: function(inSelected) {
+        if (inSelected) {
+          this.$.panels.selected = inSelected;
+        } else {
+          this.$.panels.toggleBetween('ribbon', 'main');
+        }
+        this.$.navButton.active = this.$.panels.selected == 'ribbon';
+      },
+      toggleSource: function() {
+        this.$.panels.toggleBetween('main', 'source');
+        this.$.sourceButton.active = this.$.panels.selected == 'source';
+      },
+      ribbonSelect: function() {
+        var item = this.$.ribbon.selection;
+        if (item) {
+          this.toolbarTitle = item.label;
+          this.$.contentPanels.index = this.$.ribbon.selected;
+          // force to mutate topics (which is items in pi-items-view) to trigger the delegate in pi-items-view
+          this.$.feedViewer.topics = [].concat(this.$.accounts.topics);
+          this.toggleNav('main');
+        }
+      },
+      layoutSelect: function(e) {
+        this.$.feedViewer.layout = e.currentTarget.selection.label.toLowerCase();
+      },
+      feedViewerPanelChange: function(e) {
+        this.$.navButton.src = 'images/' + (e.detail.selected == 'topics' ? 'nav-list.svg' : 'nav-return.svg');
+        this.toggleNav('main');
+      }
+    });
+  </script>
+</element>

@@ -1,0 +1,52 @@
+/*
+ * Copyright 2012 The Toolkitchen Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE file.
+ */
+@host {
+  display: -webkit-flex;
+}
+
+g-panels {
+  -webkit-flex: 1;
+  overflow: hidden;
+}
+
+#ribbon {
+  width: 260px;
+  background-color: #333;
+  color: white;
+  font-size: 15px;
+  overflow: auto;
+}
+
+#ribbon.narrow-layout, #source.narrow-layout {
+  width: -webkit-calc(100% - 60px);
+  width: calc(100% - 60px);
+}
+
+#main {
+  display: -webkit-flex;
+  -webkit-flex-flow: column;
+  background: white; 
+}
+
+#source {
+  width: 340px;
+  background-color: #4D4D4D;
+}
+
+g-toolbar > label {
+  display: -webkit-flex;
+  font-size: 21px;
+}
+
+@media screen and (max-width: 800px) {
+  g-toolbar > label {
+    -webkit-justify-content: center;
+  }
+
+  #contentPanels {
+    margin-bottom: 60px;
+  }
+}

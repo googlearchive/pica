@@ -1,0 +1,67 @@
+<!--
+/*
+ * Copyright 2012 The Toolkitchen Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style
+ * license that can be found in the LICENSE file.
+ */
+-->
+<element name="pi-items-view" attributes="layout view">
+  <link rel="stylesheet" href="css/pi-items-view.css" />
+  <template>
+    <div class="view flexbox flex {{layout}} {{view}}">
+      <template iterate="boxes">
+        <div class="box flexbox flex">
+          <template iterate>
+            <div class="inner flexbox flex-column flex {{box}}">
+              <template iterate="items">
+                <div class="item flexbox flex-column flex" on-click="itemClick">
+                  <div class="image flex" style="background-image: url({{imgSrc}});"></div>
+                  <div class="desc">{{desc}}</div>
+                </div>
+              </template>
+            </div>
+          </template>
+        </div>
+      </template>
+    </div>
+  </template>
+  <script>
+    this.component({
+      publish: {
+        items: []
+      },
+      bind: {
+        boxes: ['items']
+      },
+      process: function(inItems) {
+        var n = document.createElement('div');
+        inItems.forEach(function(item) {
+          // scrape image url
+          if (item.content) {
+            var m$ = item.content.match(/src="(.*?)"/);
+            item.imgSrc = m$ && m$[1];
+          }
+          // unescape html content
+          if (item.contentSnippet) {
+            n.innerHTML = item.contentSnippet;
+            item.desc = n.textContent;
+          }
+        });
+      },
+      boxesOutput: function(inItems) {
+        this.process(inItems);
+        var b = [];
+        for (var i=0; i < inItems.length; i += 4) {
+          b.push([
+            {box: 'one', items: inItems.slice(i, i+2)},
+            {box: 'two', items: inItems.slice(i+2, i+4)}
+          ]);
+        }
+        return b;
+      },
+      itemClick: function(e) {
+        this.fireEvent('select', {item: e.currentTarget.model});
+      }
+    });
+  </script>
+</element>
