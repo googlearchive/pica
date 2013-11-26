@@ -1,13 +1,11 @@
-@host {
-  * {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-flex-flow: column;
-    flex-direction: column;
-    height: 100%;
-  }
+:host {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-flex-flow: column;
+  flex-direction: column;
+  height: 100%;
 }
 
 pi-feed-viewer#viewer {
