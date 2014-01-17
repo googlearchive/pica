@@ -14,42 +14,53 @@
         display: none;
       }
     </style>
-    
-    <polymer-google-jsapi on-polymer-google-jsapi-loaded="{{jsapiLoaded}}"></polymer-google-jsapi>
   </template>
   <script>
+    (function() {
+      // TODO(ffu): integrate the ability to load a specific api like feeds
+      // into polymer-google-jsapi.
+      var feedsCallbacks = [];
+      var feedsApiLoading = false;
+
+      function feedsApiLoaded() {
+        while(feedsCallbacks.length) {
+          var fn = feedsCallbacks.shift();
+          fn();
+        }
+      }
+
+      function isApiLoaded() {
+        return window.google && google.feeds && google.feeds.Feed;
+      }
+
+      function withFeedsApi(callback) {
+        if (isApiLoaded() && callback) {
+          callback();
+        } else {
+          if (!feedsApiLoading) {
+            var loader = document.createElement('polymer-google-jsapi');
+            loader.addEventListener('polymer-google-jsapi-loaded', function() {
+              google.load('feeds', '1', {callback: feedsApiLoaded});  
+            });
+            feedsApiLoading = true;
+          }
+          if (callback) {
+            feedsCallbacks.push(callback);
+          }
+        } 
+      }
+
       Polymer('pi-gfeeds', {
         count: 24,
         created: function() {
           this.pendingFeeds = [];
-        },
-        ready: function() {
-          if (window.google && window.google.loader) {
-            this.jsapiLoaded();
-          }
-        },
-        jsapiLoaded: function() {
-          google.load('feeds', '1', {callback: this.feedsLoaded.bind(this)});
-        },
-        feedsLoaded: function() {
-          this.pendingFeeds.forEach(function(callback) {
-            callback();
-          });
-          this.pendingFeeds = [];
-        },
-        feedsReady: function(callback) {
-          if (window.google && window.google.feeds) {
-            callback();
-          } else {
-            this.pendingFeeds.push(callback);
-          }
         },
         feedChanged: function() {
           if (this.feed) {
             this.loading = true;
             // call fetchFeeds async to make sure any binding to count property is resolved
             // before fetchFeeds is called
-            this.feedsReady(this.asyncMethod.bind(this, 'fetchFeeds'));
+            withFeedsApi(this.fetchFeeds.bind(this));
           } else {
             this.results = null;
           }
@@ -88,5 +99,6 @@
           }
         }
       });
+  })();
   </script>
 </polymer-element>
