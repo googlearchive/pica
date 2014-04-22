@@ -5,11 +5,14 @@
  * license that can be found in the LICENSE file.
  */
 -->
-<link rel="import" href="../components/polymer-ui-scaffold/polymer-ui-scaffold.html">
-<link rel="import" href="../components/polymer-ui-pages/polymer-ui-pages.html">
-<link rel="import" href="../components/polymer-ui-menu-item/polymer-ui-menu-item.html">
-<link rel="import" href="../components/polymer-ui-sidebar-menu/polymer-ui-sidebar-menu.html">
-<link rel="import" href="../components/polymer-ui-toolbar/polymer-ui-toolbar.html">
+<link rel="import" href="../components/core-layout/core-layout.html">
+<link rel="import" href="../components/core-drawer-panel/core-drawer-panel.html">
+<link rel="import" href="../components/core-header-panel/core-header-panel.html">
+<link rel="import" href="../components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../components/core-menu/core-menu.html">
+<link rel="import" href="../components/core-item/core-item.html">
+<link rel="import" href="../components/core-pages/core-pages.html">
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
 <link rel="import" href="pi-toolbar-buttons.html">
 <link rel="import" href="pi-feed-viewer.html">
 <link rel="import" href="pi-explore.html">
@@ -20,40 +23,57 @@
 <polymer-element name="pi-app" on-keyup="{{keyupHandler}}">
   <template>
     <link rel="stylesheet" href="css/pi-app.css">
+    <link rel="stylesheet" href="../components/core-layout/core-layout.css">
     
-    <polymer-ui-scaffold id="panels" hideMenuButton menuActive="{{menuActive}}">
-      <polymer-ui-sidebar-menu id="ribbon" navigation offscreen="basement" class="custom-panel" label="Pica" 
-          selected="{{ribbonSelected}}" valueattr="label" on-polymer-activate="{{showMain}}" theme="polymer-ui-dark-theme">
-        <polymer-ui-menu-item label="Home" src="../images/ribbon_home_lightreg.png"></polymer-ui-menu-item>
-        <polymer-ui-menu-item label="Topics" src="../images/ribbon_topics_lightreg.png"></polymer-ui-menu-item>
-        <polymer-ui-menu-item label="Explore" src="../images/ribbon_explore_lightreg.png"></polymer-ui-menu-item>
-        <polymer-ui-menu-item label="Accounts" src="../images/ribbon_accounts_lightreg.png"></polymer-ui-menu-item>
-      </polymer-ui-sidebar-menu>
+    <core-drawer-panel id="panels">
+      
+      <core-header-panel drawer class="mainControls" mode="waterfall-tall">
+        
+        <core-toolbar class="mainPlate">Pica</core-toolbar>
 
-      <polymer-ui-icon-button tool icon="{{nav}}" on-tap="{{navAction}}"></polymer-ui-icon-button>
-      <div tool class="toolbar-label flex">{{toolbarLabel}}</div>
-      <polymer-ui-toolbar id="actionbar" tool hidden?="{{hideActionbar}}" responsive>
-        <pi-link-button id="linkButton" link="{{story.link}}" hidden?="{{hideLinkButton}}"></pi-link-button>
-        <pi-view-button id="viewButton" layout="{{selectedLayout}}" halign="right" hidden?="{{hideViewButton}}"></pi-view-button>
-        <pi-action-button halign="right"></pi-action-button>
-        <polymer-ui-icon-button icon="refresh" on-tap="{{reloadAction}}"></polymer-ui-icon-button>
-      </polymer-ui-toolbar>
+        <core-menu selected="{{selectedView}}" valueattr="label" on-core-activate="{{toggleDrawer}}">
+          <core-item label="Home" src="../images/ribbon_home_lightreg.png"></core-item>
+          <core-item label="Topics" src="../images/ribbon_topics_lightreg.png"></core-item>
+          <core-item label="Explore" src="../images/ribbon_explore_lightreg.png"></core-item>
+          <core-item label="Accounts" src="../images/ribbon_accounts_lightreg.png"></core-item>
+        </core-menu>
 
-      <polymer-ui-pages id="contentPanels" main selected="{{ribbonSelected}}" valueattr="id" 
-          on-polymer-select="{{panelSelectAction}}" on-tap="{{showMain}}">
-        <div id="Home"><template if="{{activatedPanels.Home}}">
-            <pi-home stocks="{{$.accountsModel.stocks}}"></pi-home>
-        </template></div>
-        <pi-feed-viewer id="Topics" topics="{{$.accountsModel.topics}}" panel="{{selectedViewPanel}}"
-            layout="{{layout}}" topicsLayout="grid" story="{{story}}"></pi-feed-viewer>
-        <div id="Explore"><template if="{{activatedPanels.Explore}}">
-          <pi-explore isContentPanel panel="{{selectedViewPanel}}"></pi-explore>
-        </template></div>
-        <div id="Accounts"><template if="{{activatedPanels.Accounts}}">
-            <pi-accounts accounts="{{$.accountsModel}}"></pi-accounts>
-        </template></div>
-      </polymer-ui-pages>
-    </polymer-ui-scaffold>
+      </core-header-panel>
+
+      <div main mode="waterfall" class="core-v core-fit">
+
+        <core-toolbar class="mainToolbar">
+          
+          <core-icon-button icon="{{nav}}" on-tap="{{navAction}}"></core-icon-button>
+          <div core-flex class="toolbar-label">{{toolbarLabel}}</div>
+          <core-toolbar id="actionbar" hidden?="{{hideActionbar}}" responsive>
+            <pi-link-button id="linkButton" link="{{story.link}}" hidden?="{{hideLinkButton}}"></pi-link-button>
+            <pi-view-button id="viewButton" layout="{{selectedLayout}}" halign="right" hidden?="{{hideViewButton}}"></pi-view-button>
+            <pi-action-button halign="right"></pi-action-button>
+            <core-icon-button icon="refresh" on-tap="{{reloadAction}}"></core-icon-button>
+          </core-toolbar>
+
+        </core-toolbar>
+
+        <core-pages class="core-flex" id="contentPanels" selected="{{selectedView}}" valueattr="id" 
+            on-core-select="{{panelSelectAction}}">
+          
+          <div id="Home"><template if="{{activatedPanels.Home}}">
+              <pi-home stocks="{{$.accountsModel.stocks}}"></pi-home>
+          </template></div>
+          <pi-feed-viewer id="Topics" topics="{{$.accountsModel.topics}}" panel="{{selectedViewPanel}}"
+              layout="{{layout}}" topicsLayout="grid" story="{{story}}"></pi-feed-viewer>
+          <div id="Explore"><template if="{{activatedPanels.Explore}}">
+            <pi-explore isContentPanel panel="{{selectedViewPanel}}"></pi-explore>
+          </template></div>
+          <div id="Accounts"><template if="{{activatedPanels.Accounts}}">
+              <pi-accounts accounts="{{$.accountsModel}}"></pi-accounts>
+          </template></div>
+
+        </core-pages>
+      </div>
+
+    </core-drawer-panel>
     
     <pi-accounts-model id="accountsModel"></pi-accounts-model>
   </template>
@@ -62,7 +82,7 @@
       var ESCAPE_KEY = 27;
       
       Polymer('pi-app', {
-        ribbonSelected: 'Topics',
+        selectedView: 'Topics',
         menuActive: false,
         selectedViewPanel: '',
         selectedLayout: null,
@@ -98,17 +118,17 @@
         navAction: function() {
           var p = this.getSelectedContentPanel();
           if (!(p.previous && p.previous())) {
-            this.$.panels.menuActionTap();
+            this.toggleDrawer();
           }
         },
-        showMain: function() {
-          this.menuActive = false;
+        toggleDrawer: function() {
+          this.$.panels.togglePanel();
         },
         reloadAction: function() {
           var p = this.getSelectedContentPanel();
           p.reload && p.reload();
         },
-        ribbonSelectedChanged: function() {
+        selectedViewChanged: function() {
           this.updateToolbar();
         },
         selectedViewPanelChanged: function() {
@@ -117,9 +137,9 @@
         updateToolbar: function() {
           var p = this.getSelectedContentPanel();
           this.toolbarLabel = p && p.canPrevious && p.topic ?
-              p.topic.title : this.ribbonSelected;
+              p.topic.title : this.selectedView;
           this.nav = p && p.canPrevious ? 'left' : 'menu';
-          this.hideActionbar = this.ribbonSelected !== 'Topics';
+          this.hideActionbar = this.selectedView !== 'Topics';
           this.hideViewButton = this.selectedViewPanel !== 'stories';
           this.hideLinkButton = this.selectedViewPanel !== 'story';
         },

@@ -9,43 +9,20 @@
 <html>
 <head>
   <title>Pica</title>
-  <script src="logBoot.js"></script>
   <script src="components/platform/platform.js"></script>
+  <script>console.log('platform', performance.now().toFixed(2));</script>
   <script src="jsapi.js"></script>
-    <script>
-    logBoot.scriptsDone();
-  </script>
   <link rel="import" href="elements/pi-app.html">
-  <style>
-    body {
-      opacity: 1;
-    }
-    .app-loading {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      left: 50%;
-      bottom: 50%;
-      margin: -25px;
-/*      -webkit-animation: spin 2s linear infinite;
-      animation: spin 2s linear infinite;*/
-      background: url(images/loading_icon.svg);
-    }
-    
-    @-webkit-keyframes spin {
-      0% {-webkit-transform: rotate(0deg);}
-      100% {-webkit-transform: rotate(359deg);}
-    }
-    
-    @keyframes spin {
-      0% {transform: rotate(0deg);}
-      100% {transform: rotate(359deg);}
-    }
-  </style>
+  <script>
+    console.log('imports', performance.now().toFixed(2));
+    var s = performance.now();
+    addEventListener('polymer-ready', function() {
+      document.body.offsetHeight;
+      console.log('polymer', performance.now().toFixed(2), (performance.now() - s).toFixed(2));
+    });
+  </script>
 </head>
 <body unresolved>
-  <pi-app theme="polymer-ui-light-theme">
-    <div class="app-loading"></div>
-  </pi-app>
+  <pi-app theme="core-light-theme"></pi-app>
 </body>
 </html>

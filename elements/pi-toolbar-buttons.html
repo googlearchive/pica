@@ -5,60 +5,57 @@
  * license that can be found in the LICENSE file.
  */
 -->
-<link rel="import" href="../components/polymer-ui-menu-button/polymer-ui-menu-button.html"/>
-<link rel="import" href="../components/polymer-ui-menu-item/polymer-ui-menu-item.html"/>
+<link rel="import" href="../components/core-menu-button/core-menu-button.html"/>
+<link rel="import" href="../components/core-item/core-item.html"/>
 <polymer-element name="pi-view-button" attributes="layout halign">
   <template>
     <style>
-      polymer-ui-menu-item.hidden-wide {
+      core-item.hidden-wide {
         display: none;
       }
         
       @media screen and (max-width: 800px) {
-        polymer-ui-menu-item.hidden-narrow {
+        core-item.hidden-narrow {
           display: none;
         }
         
-        polymer-ui-menu-item.hidden-wide {
+        core-item.hidden-wide {
           display: block;
         }
       }
     </style>
-    <polymer-ui-menu-button id="viewButton" responsive="true" icon="quilt" selected="{{layout}}" halign="{{halign}}">
-      <polymer-ui-menu-item name="quilt" label="Quilt" class="hidden-narrow" src="../images/view_quilt.png"></polymer-ui-menu-item>
-      <polymer-ui-menu-item name="quilt-horiz" label="Quilt (Horizontal)" class="hidden-narrow" src="../images/view_quilt.png"></polymer-ui-menu-item>
-      <polymer-ui-menu-item name="grid" label="Grid" src="../images/view_module.png"></polymer-ui-menu-item>
-      <polymer-ui-menu-item name="list" label="List" class="hidden-wide" src="../images/view_list.png"></polymer-ui-menu-item>
-      <polymer-ui-menu-item name="stream" label="Stream" src="../images/view_stream.png"></polymer-ui-menu-item>
-      <polymer-ui-menu-item name="column" label="Column" src="../images/view_column.png"></polymer-ui-menu-item>
-    </polymer-ui-menu-button>
+    <core-menu-button id="viewButton" responsive="true" icon="quilt" selected="{{layout}}" halign="{{halign}}">
+      <core-item name="quilt" label="Quilt" class="hidden-narrow" src="../images/view_quilt.png"></core-item>
+      <core-item name="quilt-horiz" label="Quilt (Horizontal)" class="hidden-narrow" src="../images/view_quilt.png"></core-item>
+      <core-item name="grid" label="Grid" src="../images/view_module.png"></core-item>
+      <core-item name="list" label="List" class="hidden-wide" src="../images/view_list.png"></core-item>
+      <core-item name="stream" label="Stream" src="../images/view_stream.png"></core-item>
+      <core-item name="column" label="Column" src="../images/view_column.png"></core-item>
+    </core-menu-button>
   </template>
   <script>
     Polymer('pi-view-button');
   </script>
 </polymer-element>
 
-<link rel="import" href="../components/polymer-ui-menu-button/polymer-ui-menu-button.html"/>
-<link rel="import" href="../components/polymer-ui-menu-item/polymer-ui-menu-item.html"/>
 <polymer-element name="pi-action-button" attributes="halign">
   <template>
-    <polymer-ui-menu-button icon="plus" responsive="true" halign="{{halign}}">
-      <polymer-ui-menu-item src="../images/comment.png">Post a Comment</polymer-ui-menu-item>
-      <polymer-ui-menu-item src="../images/hangout.png">Share Link</polymer-ui-menu-item>
-      <polymer-ui-menu-item src="../images/mail.png">Email Link</polymer-ui-menu-item>
-      <polymer-ui-menu-item src="../images/favorite.png">Add to Favorites</polymer-ui-menu-item>
-    </polymer-ui-menu-button>
+    <core-menu-button icon="plus" responsive="true" halign="{{halign}}">
+      <core-item src="../images/comment.png">Post a Comment</core-item>
+      <core-item src="../images/hangout.png">Share Link</core-item>
+      <core-item src="../images/mail.png">Email Link</core-item>
+      <core-item src="../images/favorite.png">Add to Favorites</core-item>
+    </core-menu-button>
   </template>
   <script>
     Polymer('pi-action-button');
   </script>
 </polymer-element>
 
-<link rel="import" href="../components/polymer-ui-icon-button/polymer-ui-icon-button.html"/>
 <polymer-element name="pi-link-button" attributes="link">
   <template>
     <a href="{{link}}" target="_blank">
-      <polymer-ui-icon-button src="../images/web.png"></polymer-ui-icon-button>
+      <core-icon-button src="../images/web.png"></core-icon-button>
     </a>
   </template>
   <script>

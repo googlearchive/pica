@@ -5,7 +5,7 @@
  * license that can be found in the LICENSE file.
  */
 -->
-<link rel="import" href="../components/polymer-ui-icon/polymer-ui-icon.html"/>
+<link rel="import" href="../components/core-icon/core-icon.html"/>
 <link rel="import" href="../components/speech-mic/speech-mic.html"/>
 <link rel="import" href="pi-gfeeds.html"/>
 <link rel="import" href="pi-feed-viewer.html"/>
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="css/pi-explore.css" />
     <div id="searchBox">
       <input id="searchInput" on-input="{{inputChange}}"/>
-      <polymer-ui-icon icon="search"></polymer-ui-icon>
+      <core-icon icon="search"></core-icon>
       <speech-mic id="speech" on-result="{{speechResult}}"></speech-mic>
     </div>
     <pi-feed-viewer id="viewer" topics="{{topics}}" topic="{{topic}}" panel="{{panel}}"
