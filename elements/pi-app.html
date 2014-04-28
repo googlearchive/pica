@@ -27,9 +27,9 @@
     
     <core-drawer-panel id="panels">
       
-      <core-header-panel drawer class="mainControls" mode="waterfall-tall">
+      <core-header-panel drawer id="appDrawer" mode="waterfall">
         
-        <core-toolbar class="mainPlate">Pica</core-toolbar>
+        <core-toolbar id="appPlate" class="medium-tall">Pica</core-toolbar>
 
         <core-menu selected="{{selectedView}}" valueattr="label" on-core-activate="{{toggleDrawer}}">
           <core-item label="Home" src="../images/ribbon_home_lightreg.png"></core-item>
@@ -42,7 +42,7 @@
 
       <div main mode="waterfall" class="core-v core-fit">
 
-        <core-toolbar class="mainToolbar">
+        <core-toolbar id="appToolbar" class="medium-tall">
           
           <core-icon-button icon="{{nav}}" on-tap="{{navAction}}"></core-icon-button>
           <div core-flex class="toolbar-label">{{toolbarLabel}}</div>

@@ -12,7 +12,7 @@
 * /deep/ core-menu-button::shadow #overlay {
   border-radius: 4px;
   border: 1px solid #ccc;
-  padding: 6px;
+  padding: 10px;
   font-size: 0.9rem;
   background-color: white;
 }
@@ -21,16 +21,23 @@
   white-space: nowrap;
 }
 
-.mainPlate {
-  background-color: steelblue;
+core-pages > * {
+  background-color: #fafafa;
 }
 
-.mainControls {
-  background-color: lightblue;
+#appPlate {
+  color: #fafafa;
+  background-color: #02a8f3;
 }
 
-.mainToolbar {
-  background-color: #ddd;
+#appDrawer {
+  background-color: white;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.35)
+}
+
+#appToolbar {
+  color: #fafafa;
+  background-color: #069bde;
 }
 
 #Accounts > .panel-loading, #Home > .panel-loading {
