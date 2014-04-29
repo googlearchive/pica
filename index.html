@@ -9,18 +9,13 @@
 <html>
 <head>
   <title>Pica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  
   <script src="components/platform/platform.js"></script>
-  <script>console.log('platform', performance.now().toFixed(2));</script>
   <script src="jsapi.js"></script>
   <link rel="import" href="elements/pi-app.html">
-  <script>
-    console.log('imports', performance.now().toFixed(2));
-    var s = performance.now();
-    addEventListener('polymer-ready', function() {
-      document.body.offsetHeight;
-      console.log('polymer', performance.now().toFixed(2), (performance.now() - s).toFixed(2));
-    });
-  </script>
 </head>
 <body unresolved>
   <pi-app theme="core-light-theme"></pi-app>
