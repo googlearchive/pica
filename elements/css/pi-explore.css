@@ -15,34 +15,22 @@ pi-feed-viewer#viewer {
 }
 
 #searchBox {
+  background: white;
   position: relative;
   width: 100%;
   height: 50px;
+  padding: 0 4px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.16);
 }
 
+#searchBox > * {
+  padding: 0 4px;
+}
+
 #searchInput {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  -webkit-align-self: stretch;
+  align-self: stretch;
   margin: 0 1px;
-  padding: 0 0 0 40px;
   border: 0;
   font-size: 16px;
-}
-
-#searchBox > speech-mic {
-  position: absolute;
-  top: 5px;
-  bottom: 0;
-  right: 0;
-}
-
-#searchBox > polymer-ui-icon {
-  position: absolute;
-  top: 13px;
-  bottom: 0;
-  left: 10px;
 }
