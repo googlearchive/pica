@@ -5,6 +5,7 @@
  * license that can be found in the LICENSE file.
  */
 -->
+<link rel="import" href="../components/core-icons/iconsets/social-icons.html"/>
 <link rel="import" href="../components/core-menu-button/core-menu-button.html"/>
 <link rel="import" href="../components/core-item/core-item.html"/>
 <polymer-element name="pi-view-button" attributes="layout halign">
@@ -24,13 +25,10 @@
         }
       }
     </style>
-    <core-menu-button id="viewButton" responsive="true" icon="quilt" selected="{{layout}}" halign="{{halign}}">
-      <core-item name="quilt" label="Quilt" class="hidden-narrow" src="../images/view_quilt.png"></core-item>
-      <core-item name="quilt-horiz" label="Quilt (Horizontal)" class="hidden-narrow" src="../images/view_quilt.png"></core-item>
-      <core-item name="grid" label="Grid" src="../images/view_module.png"></core-item>
-      <core-item name="list" label="List" class="hidden-wide" src="../images/view_list.png"></core-item>
-      <core-item name="stream" label="Stream" src="../images/view_stream.png"></core-item>
-      <core-item name="column" label="Column" src="../images/view_column.png"></core-item>
+    <core-menu-button id="viewButton" responsive="true" icon="view-module" selected="{{layout}}" halign="{{halign}}">
+      <core-item name="grid" label="Grid View" icon="view-module"></core-item>
+      <core-item name="quilt" label="Quilt View" icon="view-quilt"></core-item>
+      <core-item name="list" label="List View" icon="view-list"></core-item>
     </core-menu-button>
   </template>
   <script>
@@ -40,11 +38,11 @@
 
 <polymer-element name="pi-action-button" attributes="halign">
   <template>
-    <core-menu-button icon="plus" responsive="true" halign="{{halign}}">
-      <core-item src="../images/comment.png">Post a Comment</core-item>
-      <core-item src="../images/hangout.png">Share Link</core-item>
-      <core-item src="../images/mail.png">Email Link</core-item>
-      <core-item src="../images/favorite.png">Add to Favorites</core-item>
+    <core-menu-button icon="more-vert" responsive="true" halign="{{halign}}">
+      <core-item icon="create">Post a Comment</core-item>
+      <core-item icon="social:share">Share Link</core-item>
+      <core-item icon="mail">Email Link</core-item>
+      <core-item icon="favorite">Add to Favorites</core-item>
     </core-menu-button>
   </template>
   <script>
@@ -55,7 +53,7 @@
 <polymer-element name="pi-link-button" attributes="link">
   <template>
     <a href="{{link}}" target="_blank">
-      <core-icon-button src="../images/web.png"></core-icon-button>
+      <core-icon-button icon="launch"></core-icon-button>
     </a>
   </template>
   <script>

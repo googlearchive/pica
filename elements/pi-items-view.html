@@ -8,33 +8,33 @@
 <link rel="import" href="../components/core-icon/core-icon.html"/>
 <polymer-element name="pi-items-view" attributes="layout view items selected">
   <template>
+    <link rel="stylesheet" href="../components/core-layout/core-layout.css" />
     <link rel="stylesheet" href="css/pi-items-view.css" />
-    <link rel="stylesheet" href="css/pi-layout-flex.css" />
-    <link rel="stylesheet" href="css/pi-layout.css" />
     <div id="container" loaded="{{loaded}}" class="{{layout}} {{view}}">
-      <template repeat="{{viewItems}}">
-        <div class="item">
-          <div class="card" on-tap="{{selectItem}}">
-            <div class="image" style="background-image: url({{imgSrc}});" showing="{{imageShowing}}"></div>
-            <div class="info">
-              <div class="title">{{title}}
+      <div id="containerInner">
+        <template repeat="{{viewItems}}">
+          <div class="tile" on-tap="{{selectItem}}">
+            <div class="image" style="background-image: url({{imgSrc}});"></div>
+            <div class="info core-flex core-v">
+              <div class="title core-h core-flex">
+                <span class="core-flex">{{title}}</span>
                 <span class="unread-count">{{unread}}</span>
               </div>
-              <div class="description">{{desc}}</div>
-              <div class="content">{{dummyText}}</div>
-              <div class="source">
+              <div class="source core-h core-align-center">
                 <span class="source-icon" style="background-image: url({{sourceIcon}});"></span>
-                <span class="source-title">{{source}}
-                  <span class="source-time">{{since}}</span>
-                </span>
+                <span class="source-title core-flex">{{source}}</span>
+                <span class="source-time">{{since}}</span>
               </div>
             </div>
           </div>
+        </template>
+        <template repeat="{{dummyTiles}}">
+          <div class="tile-dummy"></div>
+        </template>  
+        <div id="more" on-tap="{{loadMore}}">
+          <core-icon icon="refresh"></core-icon>
+            Load more articles
         </div>
-      </template>
-      <div id="more" on-tap="{{loadMore}}">
-        <core-icon icon="refresh" theme="core-dark-theme"></core-icon>
-          Load more articles
       </div>
     </div>
   </template>
@@ -53,19 +53,26 @@
       }
       
       Polymer('pi-items-view', {
-        layout: 'grid',
+        publish: {
+          layout: {value: 'grid', reflect: true}
+        },
         loaded: true,
-        pageSize: 24,
+        dummyCount: 8,
+        pageSize: 27,
         ready: function() {
+          this.makeDummyTiles();
           this.setAttribute('touch-action', 'scroll');
+        },
+        makeDummyTiles: function() {
+          this.dummyTiles = [];
+          for (var i=0; i< this.dummyCount; i++) {
+            this.dummyTiles.push({});
+          }
         },
         enteredView: function() {
           this.updateMoreShowing();
         },
         loadedChanged: function() {
-          if (this.loaded && this.layout === 'grid') {
-            this.animateCascade();
-          }
         },
         itemsChanged: function() {
           if (this.items && this.pageSize > 0) {
@@ -93,42 +100,6 @@
         selectItem: function(event, detail, sender) {
           this.selected = sender.templateInstance.model;
           this.fire('select', {item: this.selected});
-        },
-        animateCascade: function() {
-          /*
-          var container = this.$.container;
-          var cards = container.querySelectorAll('.item');
-          
-          var width = toNumber(window.getComputedStyle(cards[0]).width);
-          var height = toNumber(window.getComputedStyle(cards[0]).height);
-  
-          var containerWidth = toNumber(window.getComputedStyle(container).width);
-          var containerHeight = document.documentElement.clientHeight;
-          
-          var scaledMiddleX = containerWidth / width / 2;
-          var scaledMiddleY = containerHeight / height / 2;
-  
-          var parGroup = new ParGroup();
-  
-          for (var i = 0; i < cards.length; i++) {
-            var y = cards[i].offsetTop / height;
-            var x = cards[i].offsetLeft / width;
-            var yDist = scaledMiddleY - y + 0.5;
-            var xDist = scaledMiddleX - x + 0.5;
-            var dist = Math.sqrt(yDist * yDist + xDist * xDist);
-            var yTrans = yDist * 10 / dist;
-            var xTrans = xDist * 10 / dist;
-            var d = x + y;
-            parGroup.append(
-              new Animation(cards[i], {
-                opacity: ["0", "1"],
-                "-webkit-transform": [
-                  "translate(" + xTrans + "px, " + yTrans + "px) translateZ(0)", 
-                  "translate(0px, 0px) translateZ(0)"]},
-                {duration: 0.5, startDelay: 0.03 * d, fillMode: "backwards"}));
-          }
-          document.timeline.play(parGroup);
-          */
         }
       });
     })();

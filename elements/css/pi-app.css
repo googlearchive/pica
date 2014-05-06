@@ -9,16 +9,14 @@
 }
 
 /* TODO(sorvell): move someplace better */
-* /deep/ core-menu-button::shadow #overlay {
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  padding: 10px;
+* /deep/ core-menu-button {
   font-size: 0.9rem;
-  background-color: white;
+  color: black;
 }
 
-* /deep/ core-item {
-  white-space: nowrap;
+* /deep/ core-icon {
+  opacity: 0.6;
+
 }
 
 core-pages > * {
@@ -40,6 +38,17 @@ core-pages > * {
   background-color: #069bde;
 }
 
+#appToolbar /deep/ core-icon {
+  opacity: 1;
+  fill: #fafafa;
+}
+
+
+#appToolbar /deep/ core-menu-button core-icon {
+  opacity: 0.6;
+  fill: black;
+}
+
 #Accounts > .panel-loading, #Home > .panel-loading {
   position: absolute;
   width: 50px;
@@ -55,31 +64,3 @@ core-pages > * {
 #Accounts.ready > .panel-loading, #Home.ready > .panel-loading {
   display: none;
 }
-
-@-webkit-keyframes spin {
-  0% {-webkit-transform: rotate(0deg);}
-  100% {-webkit-transform: rotate(359deg);}
-}
-
-@keyframes spin {
-  0% {transform: rotate(0deg);}
-  100% {transform: rotate(359deg);}
-}
-
-/*
-@media screen and (max-width: 800px) {
-  #actionbar > *:not(:last-child):not([hidden]) {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    z-index: 1;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  #contentPanels:not([hideactionbar=true]) {
-    margin-bottom: 60px;
-  }
-}
-*/

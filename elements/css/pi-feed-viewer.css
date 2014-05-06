@@ -20,7 +20,7 @@
 
 .feed-viewer-panels > * {
   font-size: 15px;
-  background: white;
+  background-color: #ececec;
 }
 
 .feed-viewer-panels pi-items-view {

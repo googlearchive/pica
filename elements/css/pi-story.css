@@ -13,11 +13,16 @@
   -webkit-overflow-scrolling: touch;
 }
 
+img:first-of-type {
+  display: block;
+  margin-bottom: 20px;
+}
+
 .body {
   max-width: 770px;
   margin: 0 auto;
   padding: 40px;
-  font-size: 12px;
+  font-size: 16px;
 }
  
 .title {
