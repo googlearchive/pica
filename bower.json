@@ -14,7 +14,7 @@
     "speech-mic": "Polymer/speech-mic#master",
     "polymer-ui-animated-pages": "Polymer/polymer-ui-animated-pages#master",
     "polymer-animation": "Polymer/polymer-animation#master",
-    "polymer-google-jsapi": "Polymer/polymer-google-jsapi#master",
+    "google-apis": "Polymer/google-apis/#master",
     "cool-clock": "Polymer/cool-clock#master",
     "polymer-stock": "Polymer/polymer-stock#master",
     "wu-weather": "Polymer/wu-weather#master"

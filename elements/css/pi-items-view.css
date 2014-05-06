@@ -4,10 +4,6 @@
  * license that can be found in the LICENSE file.
  */
 
-[showing=false] {  
-  display: none;
-}
-
 #container {
   overflow: hidden;
   padding: 4px 0 0 4px;
@@ -47,18 +43,20 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 190px;
+  height: 140px;
 }
 
 .title {
   font-weight: normal;
-  font-size: 18px;
+  font-size: 14px;
   opacity: .8;
   padding: 8px;
   overflow: hidden;
 }
 
-/* TODO(sorvell): not convenient to use core-align-center for this */
+/* TODO(sorvell): not convenient to use core-align-center for this 
+  vertically center
+*/
 .topics .title {
   -webkit-align-items: center;
   align-items: center;
@@ -68,22 +66,22 @@
   display: inline;
 }
 
-.stories .image {
-  height: 140px;
+.topics .image {
+  height: 190px;
 }
 
-.stories .title {
-  font-size: 14px;
+.topics .title {
+  font-size: 18px;
+}
+
+.topics .source.core-h {
+  display: none !important;
 }
 
 .unread-count {
   display: none;
   padding-left: 4px;
   color: #aaa;
-}
-
-.topics .source.core-h {
-  display: none !important;
 }
 
 .source {
@@ -109,8 +107,6 @@
 .source-time {
   font-weight: 400;
 }
-
-
 
 /* grid layout */
 

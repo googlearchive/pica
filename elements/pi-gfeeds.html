@@ -5,7 +5,7 @@
  * license that can be found in the LICENSE file.
  */
 -->
-<link rel="import" href="../components/polymer-google-jsapi/polymer-google-jsapi.html">
+<link rel="import" href="../components/google-apis/google-apis.html">
 
 <polymer-element name="pi-gfeeds" attributes="feed query results loading count">
   <template>
@@ -14,11 +14,12 @@
         display: none;
       }
     </style>
+
   </template>
   <script>
     (function() {
       // TODO(ffu): integrate the ability to load a specific api like feeds
-      // into polymer-google-jsapi.
+      // into google-jsapi.
       var feedsCallbacks = [];
       var feedsApiLoading = false;
 
@@ -38,8 +39,8 @@
           callback();
         } else {
           if (!feedsApiLoading) {
-            var loader = document.createElement('polymer-google-jsapi');
-            loader.addEventListener('polymer-google-jsapi-loaded', function() {
+            var loader = document.createElement('google-jsapi');
+            loader.addEventListener('api-load', function() {
               google.load('feeds', '1', {callback: feedsApiLoaded});  
             });
             feedsApiLoading = true;
@@ -51,7 +52,7 @@
       }
 
       Polymer('pi-gfeeds', {
-        count: 24,
+        count: 27,
         created: function() {
           this.pendingFeeds = [];
         },
@@ -84,7 +85,7 @@
         queryChanged: function() {
           if (this.query) {
             this.loading = true;
-            this.feedsReady(this.asyncMethod.bind(this, 'findFeeds'));
+            this.findFeeds();
           }
         },
         findFeeds: function() {
