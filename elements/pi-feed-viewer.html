@@ -5,10 +5,8 @@
  * license that can be found in the LICENSE file.
  */
 -->
-<!-- <link rel="import" href="../components/polymer-ui-animated-pages/polymer-ui-animated-pages.html">
-<link rel="import" href="../components/polymer-animation/polymer-animation.html">
-<link rel="import" href="../components/polymer-animation/polymer-animation-group.html"> -->
-<link rel="import" href="../components/core-pages/core-pages.html">
+<link rel="import" href="../components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../components/core-animated-pages/transitions/tile-cascade.html">
 <link rel="import" href="pi-feed-aggregator.html">
 <link rel="import" href="pi-feed-tracker.html">
 <link rel="import" href="pi-items-view.html">
@@ -18,12 +16,12 @@
   <template>
     <link rel="stylesheet" href="css/pi-feed-viewer.css">
     
-    <core-pages id="panels" class="feed-viewer-panels" selected="{{panel}}" valueattr="id"
-        on-core-select="{{panelSelected}}">
+    <core-animated-pages id="panels" class="feed-viewer-panels" selected="{{panel}}" valueattr="id"
+        on-core-animated-pages-transition-end="{{panelSelected}}" Xon-core-select="{{panelSelected}}" transitions="hero-transition tile-cascade cross-fade cross-fade-delayed">
       <pi-items-view id="topics" layout="{{topicsLayout}}" items="{{topics}}" view="topics" selected="{{topic}}"></pi-items-view>
       <pi-items-view id="stories" layout="{{layout}}" items="{{stories}}" view="stories" selected="{{story}}"></pi-items-view>
       <pi-story id="story" story="{{story}}" on-flick="{{storyFlickHandler}}" on-keydown="{{storyKeydownHandler}}"></pi-story>
-    </core-pages>
+    </core-animated-pages>
     
     <div id="loading" loading="{{loading}}"></div>
     

@@ -13,16 +13,25 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.bg {
+  background-color: #ececec;
+}
+
 img:first-of-type {
   display: block;
   margin-bottom: 20px;
 }
 
 .body {
+  background-color: white;
   max-width: 770px;
   margin: 0 auto;
   padding: 40px;
   font-size: 16px;
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  position: relative;
 }
  
 .title {
@@ -40,6 +49,10 @@ img:first-of-type {
 
 .content img {
   pointer-events: none;
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  position: relative;
 }
 
 .content a:link {

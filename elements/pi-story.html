@@ -8,14 +8,15 @@
 <polymer-element name="pi-story" attributes="story">
   <template>
     <link rel="stylesheet" href="css/pi-story.css" />
+      <div fit class="bg" cross-fade></div>
       <div class="main" touch-action="pan-y">
-        <div class="body">
+        <div class="body" hero hero-id="tile">
           <div class="title">{{story.title}}</div>
           <div class="author">by {{story.author}} on {{story.publishedLocaleDate}}</div>
           <div id="content" class="content"></div>
         </div>
       </div>
-      <div class="source-bar">
+      <div class="source-bar" cross-fade>
         <div class="source-icon" style="background-image: url({{story.sourceIcon}});"></div>
         <div class="source-title">{{story.source}}
           <span class="source-time">{{story.since}}</span>
@@ -45,6 +46,7 @@
         if (content) {
           content = content.replace(/(<iframe.*?>.*?<\/iframe>)/g, '');
           content = content.replace(/<a/g, '<a target="' + this.targetWindow + '" ');
+          content = content.replace(/<img/, '<img hero hero-id="image"');
         }
         this.$.content.innerHTML = content;
       }

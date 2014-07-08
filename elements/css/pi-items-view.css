@@ -10,6 +10,13 @@
   /* make inline-block elements not have extra padding due to whitespace */
   font-size: 0;
   text-align: center;
+  position: relative;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+.bg {
+  background-color: #ececec;
 }
 
 .tile {
@@ -17,14 +24,20 @@
   display: -webkit-inline-flex;
   -webkit-flex-direction: column;
   flex-direction: column;
-  overflow: hidden;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   height: 245px;
   width: 210px;
   margin: 4px;
-  background-color: white;
   text-align: left;
+  position: relative;
+}
+
+.tile-fit {
+  background-color: white;
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .tile-dummy {
@@ -38,6 +51,9 @@
 }
 
 .image {
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   background-repeat: no-repeat;
@@ -52,6 +68,12 @@
   opacity: .8;
   padding: 8px;
   overflow: hidden;
+}
+
+.info {
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 /* TODO(sorvell): not convenient to use core-align-center for this 

@@ -43,10 +43,18 @@ core-pages > * {
   fill: #fafafa;
 }
 
+#actionbar {
+  background-color: transparent;
+}
+
 
 #appToolbar /deep/ core-menu-button core-icon {
   opacity: 0.6;
   fill: black;
+}
+
+#contentPanels {
+  overflow: hidden;
 }
 
 #Accounts > .panel-loading, #Home > .panel-loading {

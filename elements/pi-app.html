@@ -12,6 +12,8 @@
 <link rel="import" href="../components/core-menu/core-menu.html">
 <link rel="import" href="../components/core-item/core-item.html">
 <link rel="import" href="../components/core-pages/core-pages.html">
+<link rel="import" href="../components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../components/core-animated-pages/transitions/slide-from-bottom.html">
 <link rel="import" href="../components/core-icon-button/core-icon-button.html">
 <link rel="import" href="pi-toolbar-buttons.html">
 <link rel="import" href="pi-feed-viewer.html">
@@ -55,8 +57,8 @@
 
         </core-toolbar>
 
-        <core-pages class="core-flex" id="contentPanels" selected="{{selectedView}}" valueattr="id" 
-            on-core-select="{{panelSelectAction}}">
+        <core-animated-pages class="core-flex" id="contentPanels" selected="{{selectedView}}" valueattr="id" 
+            on-core-select="{{panelSelectAction}}" transitions="slide-from-bottom slide-from-right">
           
           <div id="Home"><template if="{{activatedPanels.Home}}">
               <pi-home stocks="{{$.accountsModel.stocks}}"></pi-home>
@@ -70,7 +72,7 @@
               <pi-accounts accounts="{{$.accountsModel}}"></pi-accounts>
           </template></div>
 
-        </core-pages>
+        </core-animated-pages>
       </div>
 
     </core-drawer-panel>
