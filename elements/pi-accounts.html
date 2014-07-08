@@ -12,33 +12,32 @@
 <polymer-element name="pi-accounts" attributes="accounts">
   <template>
     <link rel="stylesheet" href="css/pi-accounts.css" />
-    <link rel="stylesheet" href="../components/core-layout/core-layout.css">
-    <div class="core-h core-align-center item">
-      <div class="core-flex"></div>
+    <div center horizontal layout class="item">
+      <div flex></div>
       <button class="button" on-tap="{{reset}}">Restore Defaults</button>
     </div>
-    <div class="header core-h core-align-center item">Finance</div>
+    <div center horizontal layout class="header item">Finance</div>
     <div>
       <template repeat="{{accounts.stocks}}">
-        <div class="core-h core-align-center item">
-          <div class="core-flex">{{}}</div>
+        <div center horizontal layout class="item">
+          <div flex>{{}}</div>
           <core-icon-button icon="close" on-tap="{{removeStock}}"></core-icon-button>
         </div>
       </template>
     </div>
-    <div class="core-h core-align-center item">
+    <div center horizontal layout class="item">
       <div class="item-input-label">Symbol: </div>
       <input id="symbol" autocorrect="off" operation="addStock" on-keyup="{{keyupHandler}}" />
       <core-icon-button icon="plus" on-tap="{{addStock}}"></core-icon-button>
     </div>
-    <div class="header core-h core-align-center item">Topics</div>
-    <div class="core-h core-align-center item accounts-title">Add New Feed</div>
-    <div class="core-h core-align-center item no-border">
+    <div center horizontal layout class="header item">Topics</div>
+    <div center horizontal layout class="item accounts-title">Add New Feed</div>
+    <div center horizontal layout class="item no-border">
       <div class="item-input-label">Url: </div>
-      <input id="feed" type="url" class="core-flex" operation="addFeed" on-keyup="{{keyupHandler}}" />
+      <input id="feed" type="url" flex operation="addFeed" on-keyup="{{keyupHandler}}" />
       <core-icon-button icon="plus" on-tap="{{addFeed}}"></core-icon-button>
     </div>
-    <div class="core-h core-align-center item">
+    <div center horizontal layout class="item">
       <div class="item-input-label">Category: </div>
       <span class="category-select-value">{{selectedCategory}}</span>
       <core-menu-button id="categorySelect" selected="{{selectedCategory}}" icon="more-vert">
@@ -47,22 +46,22 @@
         </template>
       </core-menu-button>
     </div>
-    <div class="core-h core-align-center item accounts-title">Add New Category</div>
-    <div class="core-h core-align-center item">
+    <div center horizontal layout class="item accounts-title">Add New Category</div>
+    <div center horizontal layout class="item">
       <div class="item-input-label">Name: </div>
-      <input id="category" class="core-flex" operation='addCategory' on-keyup="{{keyupHandler}}" />
+      <input id="category" flex operation='addCategory' on-keyup="{{keyupHandler}}" />
       <core-icon-button icon="plus" on-tap="{{addCategory}}"></core-icon-button>
     </div>
     <div>
       <template repeat="{{accounts.topics}}">
-        <div class="core-h core-align-center item accounts-title">
+        <div center horizontal layout class="item accounts-title">
           <core-icon class="accounts-title-icon" icon="favorite"></core-icon>
-          <div class="core-flex">{{title}}</div>
+          <div flex>{{title}}</div>
           <core-icon-button icon="close" on-tap="{{removeTopic}}"></core-icon-button>
         </div>
         <template repeat="{{feed}}">
-          <div class="core-h core-align-center item">
-            <div class="core-flex accounts-feed-title">{{title}}</div>
+          <div center horizontal layout class="item">
+            <div flex class="accounts-feed-title">{{title}}</div>
             <core-icon-button icon="close" on-tap="{{removeFeed}}"></core-icon-button>
           </div>
         </template>

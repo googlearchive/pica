@@ -8,9 +8,7 @@
 <link rel="import" href="../components/core-icon/core-icon.html"/>
 <polymer-element name="pi-items-view" attributes="layout view items selected">
   <template>
-    <link rel="stylesheet" href="../components/core-layout/core-layout.css">
     <link rel="stylesheet" href="css/pi-items-view.css">
-    <!-- <div fit class="bg" cross-fade></div> -->
     <div id="container" loaded="{{loaded}}" class="{{layout}} {{view}}">
       <div fit class="bg" cross-fade></div>
       <div id="containerInner" tile-cascade?="{{!selected || view != 'stories'}}" cross-fade?="{{!selected || view != 'stories'}}">
@@ -18,14 +16,14 @@
           <div class="tile" on-tap="{{selectItem}}">
             <div fit class="tile-fit" hero?="{{view == 'stories' && selected.title == item.title}}" hero-id="tile"></div>
             <div class="image" style="background-image: url({{item.imgSrc}});" hero?="{{view == 'stories' && selected.title == item.title}}" hero-id="image"></div>
-            <div class="info core-flex core-v" hero?="{{view == 'stories' && selected.title == item.title}}" cross-fade-delayed?="{{view == 'stories' && selected.title == item.title}}">
-              <div class="title core-h core-flex">
-                <span class="core-flex">{{item.title}}</span>
+            <div flex vertical layout class="info" hero?="{{view == 'stories' && selected.title == item.title}}" cross-fade-delayed?="{{view == 'stories' && selected.title == item.title}}">
+              <div flex horizontal layout class="title">
+                <span flex>{{item.title}}</span>
                 <span class="unread-count">{{item.unread}}</span>
               </div>
-              <div class="source core-h core-align-center">
+              <div center horizontal layout class="source">
                 <span class="source-icon" style="background-image: url({{item.sourceIcon}});"></span>
-                <span class="source-title core-flex">{{item.source}}</span>
+                <span flex class="source-title">{{item.source}}</span>
                 <span class="source-time">{{item.since}}</span>
               </div>
             </div>

@@ -11,11 +11,10 @@
 <link rel="import" href="pi-feed-viewer.html"/>
 <polymer-element name="pi-explore" attributes="panel topic">
   <template>
-    <link rel="stylesheet" href="../components/core-layout/core-layout.css">
     <link rel="stylesheet" href="css/pi-explore.css" />
-    <div id="searchBox" class="core-h core-align-center">
+    <div id="searchBox" center horizontal layout>
       <core-icon icon="search"></core-icon>
-      <input id="searchInput" class="core-flex" on-input="{{inputChange}}"/>
+      <input id="searchInput" flex on-input="{{inputChange}}"/>
       <speech-mic id="speech" on-result="{{speechResult}}"></speech-mic>
     </div>
     <pi-feed-viewer id="viewer" topics="{{topics}}" topic="{{topic}}" panel="{{panel}}"
