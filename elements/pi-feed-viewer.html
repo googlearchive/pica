@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/pi-feed-viewer.css">
     
     <core-animated-pages id="panels" class="feed-viewer-panels" selected="{{panel}}" valueattr="id"
-        on-core-animated-pages-transition-end="{{panelSelected}}" Xon-core-select="{{panelSelected}}" transitions="hero-transition tile-cascade cross-fade cross-fade-delayed">
+        on-core-animated-pages-transition-end="{{panelSelected}}" transitions="hero-transition tile-cascade cross-fade cross-fade-delayed">
       <pi-items-view id="topics" layout="{{topicsLayout}}" items="{{topics}}" view="topics" selected="{{topic}}"></pi-items-view>
       <pi-items-view id="stories" layout="{{layout}}" items="{{stories}}" view="stories" selected="{{story}}"></pi-items-view>
       <pi-story id="story" story="{{story}}" on-flick="{{storyFlickHandler}}" on-keydown="{{storyKeydownHandler}}"></pi-story>

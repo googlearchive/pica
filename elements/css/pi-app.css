@@ -3,21 +3,6 @@
  * Use of this source code is governed by a BSD-style
  * license that can be found in the LICENSE file.
  */
-:host {
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'open sans', sans-serif;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-/* TODO(sorvell): move someplace better */
-* /deep/ core-menu-button {
-  font-size: 0.9rem;
-  color: black;
-}
-
-* /deep/ core-icon {
-  opacity: 0.6;
-
-}
 
 core-pages > * {
   background-color: #fafafa;
@@ -48,7 +33,7 @@ core-pages > * {
 }
 
 
-#appToolbar /deep/ core-menu-button core-icon {
+#appToolbar /deep/ #overlay core-icon {
   opacity: 0.6;
   fill: black;
 }

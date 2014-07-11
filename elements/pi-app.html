@@ -14,12 +14,14 @@
 <link rel="import" href="../components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="../components/core-animated-pages/transitions/slide-from-bottom.html">
 <link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../components/font-roboto/roboto.html">
 <link rel="import" href="pi-toolbar-buttons.html">
 <link rel="import" href="pi-feed-viewer.html">
 <link rel="import" href="pi-explore.html">
 <link rel="import" href="pi-home.html">
 <link rel="import" href="pi-accounts.html">
 <link rel="import" href="pi-accounts-model.html">
+<link rel="stylesheet" href="css/theme.css" shim-shadowdom>
 
 <polymer-element name="pi-app" on-keyup="{{keyupHandler}}">
   <template>
@@ -59,15 +61,15 @@
             on-core-select="{{panelSelectAction}}" transitions="slide-from-bottom slide-from-right">
           
           <div id="Home"><template if="{{activatedPanels.Home}}">
-              <pi-home stocks="{{$.accountsModel.stocks}}"></pi-home>
+              <pi-home stocks="{{$.accountsModel.stocks}}" fit></pi-home>
           </template></div>
           <pi-feed-viewer id="Topics" topics="{{$.accountsModel.topics}}" panel="{{selectedViewPanel}}"
               layout="{{layout}}" topicsLayout="grid" story="{{story}}"></pi-feed-viewer>
           <div id="Explore"><template if="{{activatedPanels.Explore}}">
-            <pi-explore isContentPanel panel="{{selectedViewPanel}}"></pi-explore>
+            <pi-explore isContentPanel panel="{{selectedViewPanel}}" fit></pi-explore>
           </template></div>
           <div id="Accounts"><template if="{{activatedPanels.Accounts}}">
-              <pi-accounts accounts="{{$.accountsModel}}"></pi-accounts>
+              <pi-accounts accounts="{{$.accountsModel}}" fit></pi-accounts>
           </template></div>
 
         </core-animated-pages>

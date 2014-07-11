@@ -5,19 +5,19 @@
  * license that can be found in the LICENSE file.
  */
 -->
-<link rel="import" href="../components/core-icon/core-icon.html"/>
-<link rel="import" href="../components/speech-mic/speech-mic.html"/>
-<link rel="import" href="pi-gfeeds.html"/>
-<link rel="import" href="pi-feed-viewer.html"/>
-<polymer-element name="pi-explore" attributes="panel topic">
+<link rel="import" href="../components/core-icon/core-icon.html">
+<link rel="import" href="../components/speech-mic/speech-mic.html">
+<link rel="import" href="pi-gfeeds.html">
+<link rel="import" href="pi-feed-viewer.html">
+<polymer-element name="pi-explore" attributes="panel topic" vertical layout>
   <template>
-    <link rel="stylesheet" href="css/pi-explore.css" />
+    <link rel="stylesheet" href="css/pi-explore.css">
     <div id="searchBox" center horizontal layout>
       <core-icon icon="search"></core-icon>
-      <input id="searchInput" flex on-input="{{inputChange}}"/>
+      <input id="searchInput" flex on-input="{{inputChange}}">
       <speech-mic id="speech" on-result="{{speechResult}}"></speech-mic>
     </div>
-    <pi-feed-viewer id="viewer" topics="{{topics}}" topic="{{topic}}" panel="{{panel}}"
+    <pi-feed-viewer id="viewer" flex topics="{{topics}}" topic="{{topic}}" panel="{{panel}}"
         layout="{{layout}}" topicsLayout="{{layout}}" loading="{{loading}}" disableTracking></pi-feed-viewer>
     <pi-gfeeds query="{{query}}" on-queryresponse="{{queryResponse}}" loading="{{loading}}"></pi-gfeeds>
   </template>

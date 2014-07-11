@@ -8,7 +8,7 @@
 <link rel="import" href="../components/core-icons/iconsets/social-icons.html"/>
 <link rel="import" href="../components/core-menu-button/core-menu-button.html"/>
 <link rel="import" href="../components/core-item/core-item.html"/>
-<polymer-element name="pi-view-button" attributes="layout halign">
+<polymer-element name="pi-view-button" attributes="layout halign" noscript>
   <template>
     <style>
       core-item.hidden-wide {
@@ -31,12 +31,9 @@
       <core-item name="list" label="List View" icon="view-list"></core-item>
     </core-menu-button>
   </template>
-  <script>
-    Polymer('pi-view-button');
-  </script>
 </polymer-element>
 
-<polymer-element name="pi-action-button" attributes="halign">
+<polymer-element name="pi-action-button" attributes="halign" noscript>
   <template>
     <core-menu-button icon="more-vert" responsive="true" halign="{{halign}}">
       <core-item icon="create">Post a Comment</core-item>
@@ -45,18 +42,12 @@
       <core-item icon="favorite">Add to Favorites</core-item>
     </core-menu-button>
   </template>
-  <script>
-    Polymer('pi-action-button');
-  </script>
 </polymer-element>
 
-<polymer-element name="pi-link-button" attributes="link">
+<polymer-element name="pi-link-button" attributes="link" noscript>
   <template>
     <a href="{{link}}" target="_blank">
       <core-icon-button icon="launch"></core-icon-button>
     </a>
   </template>
-  <script>
-    Polymer('pi-link-button');
-  </script>
 </polymer-element>

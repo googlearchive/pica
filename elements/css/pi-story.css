@@ -28,6 +28,7 @@ img:first-of-type {
   margin: 0 auto;
   padding: 40px;
   font-size: 16px;
+  overflow: hidden;
   will-change: transform;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);

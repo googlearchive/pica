@@ -5,16 +5,17 @@
  * license that can be found in the LICENSE file.
  */
 -->
-<link rel="import" href="../components/core-icon-button/core-icon-button.html"/>
-<link rel="import" href="../components/core-item/core-item.html"/>
-<link rel="import" href="../components/core-menu-button/core-menu-button.html"/>
-<link rel="import" href="pi-gfeeds.html"/>
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../components/core-item/core-item.html">
+<link rel="import" href="../components/core-menu-button/core-menu-button.html">
+<link rel="import" href="../components/paper-button/paper-button.html">
+<link rel="import" href="pi-gfeeds.html">
 <polymer-element name="pi-accounts" attributes="accounts">
   <template>
-    <link rel="stylesheet" href="css/pi-accounts.css" />
+    <link rel="stylesheet" href="css/pi-accounts.css">
     <div center horizontal layout class="item">
       <div flex></div>
-      <button class="button" on-tap="{{reset}}">Restore Defaults</button>
+      <paper-button raisedButton class="button" on-tap="{{reset}}" label="Restore Defaults"></paper-button>
     </div>
     <div center horizontal layout class="header item">Finance</div>
     <div>
@@ -27,15 +28,15 @@
     </div>
     <div center horizontal layout class="item">
       <div class="item-input-label">Symbol: </div>
-      <input id="symbol" autocorrect="off" operation="addStock" on-keyup="{{keyupHandler}}" />
-      <core-icon-button icon="plus" on-tap="{{addStock}}"></core-icon-button>
+      <input id="symbol" autocorrect="off" operation="addStock" on-keyup="{{keyupHandler}}" >
+      <core-icon-button icon="add" on-tap="{{addStock}}"></core-icon-button>
     </div>
     <div center horizontal layout class="header item">Topics</div>
     <div center horizontal layout class="item accounts-title">Add New Feed</div>
     <div center horizontal layout class="item no-border">
       <div class="item-input-label">Url: </div>
-      <input id="feed" type="url" flex operation="addFeed" on-keyup="{{keyupHandler}}" />
-      <core-icon-button icon="plus" on-tap="{{addFeed}}"></core-icon-button>
+      <input id="feed" type="url" flex operation="addFeed" on-keyup="{{keyupHandler}}" >
+      <core-icon-button icon="add" on-tap="{{addFeed}}"></core-icon-button>
     </div>
     <div center horizontal layout class="item">
       <div class="item-input-label">Category: </div>
@@ -49,8 +50,8 @@
     <div center horizontal layout class="item accounts-title">Add New Category</div>
     <div center horizontal layout class="item">
       <div class="item-input-label">Name: </div>
-      <input id="category" flex operation='addCategory' on-keyup="{{keyupHandler}}" />
-      <core-icon-button icon="plus" on-tap="{{addCategory}}"></core-icon-button>
+      <input id="category" flex operation='addCategory' on-keyup="{{keyupHandler}}" >
+      <core-icon-button icon="add" on-tap="{{addCategory}}"></core-icon-button>
     </div>
     <div>
       <template repeat="{{accounts.topics}}">
