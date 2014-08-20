@@ -18,13 +18,13 @@
             <div class="image" style="background-image: url({{item.imgSrc}});" hero?="{{view == 'stories' && selected.title == item.title}}" hero-id="image"></div>
             <div flex vertical layout class="info" hero?="{{view == 'stories' && selected.title == item.title}}" cross-fade-delayed?="{{view == 'stories' && selected.title == item.title}}">
               <div flex horizontal layout class="title">
-                <span flex>{{item.title}}</span>
-                <span class="unread-count">{{item.unread}}</span>
+                <div flex>{{item.title}}</div>
+                <div class="unread-count">{{item.unread}}</div>
               </div>
               <div center horizontal layout class="source">
-                <span class="source-icon" style="background-image: url({{item.sourceIcon}});"></span>
-                <span flex class="source-title">{{item.source}}</span>
-                <span class="source-time">{{item.since}}</span>
+                <div class="source-icon" style="background-image: url({{item.sourceIcon}});"></div>
+                <div flex class="source-title">{{item.source}}</div>
+                <div class="source-time">{{item.since}}</div>
               </div>
             </div>
           </div>
