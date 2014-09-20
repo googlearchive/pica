@@ -13,7 +13,7 @@
     "core-toolbar": "Polymer/core-toolbar#master",
     "paper-button": "Polymer/paper-button#master",
     "speech-mic": "Polymer/speech-mic#master",
-    "google-apis": "Polymer/google-apis/#master",
+    "google-apis": "GoogleWebComponents/google-apis#master",
     "cool-clock": "Polymer/cool-clock#master",
     "polymer-stock": "Polymer/polymer-stock#master",
     "wu-weather": "Polymer/wu-weather#master"
