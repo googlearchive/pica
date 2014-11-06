@@ -2,7 +2,7 @@
   "name": "pica",
   "private": true,
   "dependencies": {
-    "platform": "Polymer/platform#master",
+    "webcomponentsjs": "Polymer/webcomponentsjs#master",
     "core-icon-button": "Polymer/core-icon-button#master",
     "core-menu-button": "Polymer/core-menu-button#master",
     "core-item": "Polymer/core-item#master",
