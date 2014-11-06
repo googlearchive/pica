@@ -5,14 +5,22 @@
  * license that can be found in the LICENSE file.
  */
 -->
-<link rel="import" href="../components/core-icons/social-icons.html"/>
-<link rel="import" href="../components/core-menu-button/core-menu-button.html"/>
-<link rel="import" href="../components/core-item/core-item.html"/>
+<link rel="import" href="../components/core-icons/social-icons.html">
+<link rel="import" href="../components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../components/core-menu-button/core-menu-button.html">
+<link rel="import" href="../components/core-dropdown/core-dropdown.html">
+<link rel="import" href="../components/core-menu/core-menu.html">
+<link rel="import" href="../components/core-item/core-item.html">
 <polymer-element name="pi-view-button" attributes="layout halign" noscript>
   <template>
     <style>
       core-item.hidden-wide {
         display: none;
+      }
+      
+      core-dropdown {
+        border: 1px solid #ccc;
+        border-radius: 3px;
       }
         
       @media screen and (max-width: 800px) {
@@ -25,21 +33,37 @@
         }
       }
     </style>
-    <core-menu-button id="viewButton" responsive="true" icon="view-module" selected="{{layout}}" halign="{{halign}}">
-      <core-item name="grid" label="Grid View" icon="view-module"></core-item>
-      <core-item name="quilt" label="Quilt View" icon="view-quilt"></core-item>
-      <core-item name="list" label="List View" icon="view-list"></core-item>
+    <core-menu-button id="viewButton" responsive="true" icon="view-module">
+      <core-icon-button icon="view-module"></core-icon-button>
+      <core-dropdown class="dropdown" halign="{{halign}}">
+        <core-menu selected="{{layout}}">
+          <core-item name="grid" label="Grid View" icon="view-module"></core-item>
+          <core-item name="quilt" label="Quilt View" icon="view-quilt"></core-item>
+          <core-item name="list" label="List View" icon="view-list"></core-item>
+        </core-menu>
+      </core-dropdown>
     </core-menu-button>
   </template>
 </polymer-element>
 
 <polymer-element name="pi-action-button" attributes="halign" noscript>
   <template>
-    <core-menu-button icon="more-vert" responsive="true" halign="{{halign}}">
-      <core-item icon="create">Post a Comment</core-item>
-      <core-item icon="social:share">Share Link</core-item>
-      <core-item icon="mail">Email Link</core-item>
-      <core-item icon="favorite">Add to Favorites</core-item>
+    <style>
+      core-dropdown {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+    </style>
+    <core-menu-button responsive="true">
+      <core-icon-button icon="more-vert"></core-icon-button>
+      <core-dropdown class="dropdown" halign="{{halign}}">
+        <core-menu>
+          <core-item icon="create">Post a Comment</core-item>
+          <core-item icon="social:share">Share Link</core-item>
+          <core-item icon="mail">Email Link</core-item>
+          <core-item icon="favorite">Add to Favorites</core-item>
+        </core-menu>
+      </core-dropdown>
     </core-menu-button>
   </template>
 </polymer-element>

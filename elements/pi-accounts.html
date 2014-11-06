@@ -8,6 +8,8 @@
 <link rel="import" href="../components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../components/core-item/core-item.html">
 <link rel="import" href="../components/core-menu-button/core-menu-button.html">
+<link rel="import" href="../components/core-dropdown/core-dropdown.html">
+<link rel="import" href="../components/core-menu/core-menu.html">
 <link rel="import" href="../components/paper-button/paper-button.html">
 <link rel="import" href="pi-gfeeds.html">
 <polymer-element name="pi-accounts" attributes="accounts">
@@ -15,7 +17,7 @@
     <link rel="stylesheet" href="css/pi-accounts.css">
     <div center horizontal layout class="item">
       <div flex></div>
-      <paper-button raisedButton class="button" on-tap="{{reset}}" label="Restore Defaults"></paper-button>
+      <paper-button raised class="button" on-tap="{{reset}}">Restore Defaults</paper-button>
     </div>
     <div center horizontal layout class="header item">Finance</div>
     <div>
@@ -41,10 +43,15 @@
     <div center horizontal layout class="item">
       <div class="item-input-label">Category: </div>
       <span class="category-select-value">{{selectedCategory}}</span>
-      <core-menu-button id="categorySelect" selected="{{selectedCategory}}" icon="more-vert">
-        <template repeat="{{accounts.categories}}">
-          <core-item name="{{}}">{{}}</core-item>
-        </template>
+      <core-menu-button id="categorySelect">
+        <core-icon-button icon="more-vert"></core-icon-button>
+        <core-dropdown class="dropdown" halign="{{halign}}">
+          <core-menu selected="{{selectedCategory}}">
+            <template repeat="{{accounts.categories}}">
+              <core-item name="{{}}">{{}}</core-item>
+            </template>
+          </core-menu>
+        </core-dropdown>
       </core-menu-button>
     </div>
     <div center horizontal layout class="item accounts-title">Add New Category</div>

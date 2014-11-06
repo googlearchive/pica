@@ -33,7 +33,7 @@ core-pages > * {
 }
 
 
-#appToolbar /deep/ #overlay core-icon {
+#appToolbar /deep/ core-item::shadow core-icon {
   opacity: 0.6;
   fill: black;
 }
