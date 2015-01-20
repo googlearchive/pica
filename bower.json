@@ -16,6 +16,7 @@
     "google-apis": "GoogleWebComponents/google-apis#master",
     "cool-clock": "Polymer/cool-clock#master",
     "polymer-stock": "Polymer/polymer-stock#master",
-    "wu-weather": "Polymer/wu-weather#master"
+    "wu-weather": "Polymer/wu-weather#master",
+    "core-pages": "Polymer/core-pages#master"
   }
 }
