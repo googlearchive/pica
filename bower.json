@@ -2,21 +2,22 @@
   "name": "pica",
   "private": true,
   "dependencies": {
-    "webcomponentsjs": "Polymer/webcomponentsjs#master",
-    "core-icon-button": "Polymer/core-icon-button#master",
-    "core-menu-button": "Polymer/core-menu-button#master",
-    "core-item": "Polymer/core-item#master",
-    "core-scaffold": "Polymer/core-scaffold#master",
-    "core-animated-pages": "Polymer/core-animated-pages#master",
-    "core-drawer-panel": "Polymer/core-drawer-panel#master",
-    "core-header-panel": "Polymer/core-header-panel#master",
-    "core-toolbar": "Polymer/core-toolbar#master",
-    "paper-button": "Polymer/paper-button#master",
-    "speech-mic": "Polymer/speech-mic#master",
+    "webcomponentsjs": "Polymer/webcomponentsjs#^0.5",
+    "core-icon-button": "Polymer/core-icon-button#^0.5",
+    "core-menu-button": "Polymer/core-menu-button#^0.5",
+    "core-item": "Polymer/core-item#^0.5",
+    "core-scaffold": "Polymer/core-scaffold#^0.5",
+    "core-animated-pages": "Polymer/core-animated-pages#^0.5",
+    "core-drawer-panel": "Polymer/core-drawer-panel#^0.5",
+    "core-header-panel": "Polymer/core-header-panel#^0.5",
+    "core-toolbar": "Polymer/core-toolbar#^0.5",
+    "paper-button": "Polymer/paper-button#^0.5",
+    "speech-mic": "Polymer/speech-mic#^0.5",
     "google-apis": "GoogleWebComponents/google-apis#master",
-    "cool-clock": "Polymer/cool-clock#master",
-    "polymer-stock": "Polymer/polymer-stock#master",
-    "wu-weather": "Polymer/wu-weather#master",
-    "core-pages": "Polymer/core-pages#master"
-  }
+    "cool-clock": "Polymer/cool-clock#^0.5",
+    "polymer-stock": "Polymer/polymer-stock#^0.5",
+    "wu-weather": "Polymer/wu-weather#^0.5",
+    "core-pages": "Polymer/core-pages#^0.5"
+  },
+  "version": "0.5.3"
 }
